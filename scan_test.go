@@ -6,6 +6,22 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestLeft(t *testing.T) {
+	assert.Equal(t, []int{}, Left([]int{1, 2}, 0))
+	assert.Equal(t, []int{1}, Left([]int{1, 2}, 1))
+	assert.Equal(t, []int{1, 2}, Left([]int{1, 2}, 2))
+	assert.Equal(t, []int{1, 2}, Left([]int{1, 2}, 3))
+}
+
+func TestLen(t *testing.T) {
+	assert.Equal(t, 0, Len([]int{}))
+	assert.Equal(t, 1, Len([]int{1}))
+	assert.Equal(t, 1, Len([1]int{1}))
+	assert.Equal(t, 2, Len([2]int{1, 2}))
+	assert.Equal(t, 0, Len(map[string]int{}))
+	assert.Equal(t, 1, Len(map[string]int{"one": 1}))
+}
+
 func TestForEach(t *testing.T) {
 	is := assert.New(t)
 

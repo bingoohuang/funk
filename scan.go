@@ -180,13 +180,10 @@ func Initial(arr interface{}) interface{} {
 // Tail gets all but the first element of array.
 func Tail(arr interface{}) interface{} {
 	value := redirectValue(reflect.ValueOf(arr))
-	valueType := value.Type()
-
 	kind := value.Kind()
 
 	if kind == reflect.Array || kind == reflect.Slice {
 		length := value.Len()
-
 		if length <= 1 {
 			return arr
 		}
@@ -194,5 +191,33 @@ func Tail(arr interface{}) interface{} {
 		return value.Slice(1, length).Interface()
 	}
 
-	panic(fmt.Sprintf("Type %s is not supported by Initial", valueType.String()))
+	panic(fmt.Sprintf("Type %v is not supported by Tail", value.Type()))
+}
+
+// Len return the length of the slice or map.
+func Len(arr interface{}) int {
+	value := redirectValue(reflect.ValueOf(arr))
+
+	switch value.Kind() {
+	case reflect.Array, reflect.Slice, reflect.Map:
+		return value.Len()
+	}
+
+	panic(fmt.Sprintf("Type %v is not supported by Len", value.Type()))
+}
+
+// Left return the left at most n items of the slice.
+func Left(arr interface{}, n int) interface{} {
+	v := redirectValue(reflect.ValueOf(arr))
+
+	switch v.Kind() {
+	case reflect.Array, reflect.Slice:
+		if n >= v.Len() {
+			return arr
+		}
+
+		return v.Slice(0, n).Interface()
+	}
+
+	panic(fmt.Sprintf("Type %v is not supported by Len", v.Type()))
 }
