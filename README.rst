@@ -5,9 +5,9 @@ funk
     :alt: Build Status
     :target: http://travis-ci.org/bingoohuang/funk
 
-.. image:: https://godoc.org/github.com/bingoohuang/funk?status.svg
+.. image:: https://pkg.go.dev/github.com/bingoohuang/funk?status.svg
     :alt: GoDoc
-    :target: https://godoc.org/github.com/bingoohuang/funk
+    :target: https://pkg.go.dev/github.com/bingoohuang/funk
 
 .. image:: https://goreportcard.com/badge/github.com/bingoohuang/funk
     :alt: Go report
@@ -129,11 +129,11 @@ this can be replaced by ``funk.Contains``:
 
 see also, typesafe implementations: ContainsInt_, ContainsInt64_, ContainsFloat32_, ContainsFloat64_, ContainsString_
 
-.. _ContainsFloat32: https://godoc.org/github.com/bingoohuang/funk#ContainsFloat32
-.. _ContainsFloat64: https://godoc.org/github.com/bingoohuang/funk#ContainsFloat64
-.. _ContainsInt: https://godoc.org/github.com/bingoohuang/funk#ContainsInt
-.. _ContainsInt64: https://godoc.org/github.com/bingoohuang/funk#ContainsInt64
-.. _ContainsString: https://godoc.org/github.com/bingoohuang/funk#ContainsString
+.. _ContainsFloat32: https://pkg.go.dev/github.com/bingoohuang/funk#ContainsFloat32
+.. _ContainsFloat64: https://pkg.go.dev/github.com/bingoohuang/funk#ContainsFloat64
+.. _ContainsInt: https://pkg.go.dev/github.com/bingoohuang/funk#ContainsInt
+.. _ContainsInt64: https://pkg.go.dev/github.com/bingoohuang/funk#ContainsInt64
+.. _ContainsString: https://pkg.go.dev/github.com/bingoohuang/funk#ContainsString
 
 funk.Intersect
 ..............
@@ -147,7 +147,7 @@ Returns the intersection between two collections.
 
 see also, typesafe implementations: IntersectString
 
-.. IntersectString: https://godoc.org/github.com/bingoohuang/funk#IntersectString
+.. IntersectString: https://pkg.go.dev/github.com/bingoohuang/funk#IntersectString
 
 
 funk.Difference
@@ -162,7 +162,7 @@ Returns the difference between two collections.
 
 see also, typesafe implementations: DifferenceString
 
-.. DifferenceString: https://godoc.org/github.com/bingoohuang/funk#DifferenceString
+.. DifferenceString: https://pkg.go.dev/github.com/bingoohuang/funk#DifferenceString
 
 
 funk.IndexOf
@@ -179,11 +179,11 @@ if the value cannot be found.
 
 see also, typesafe implementations: IndexOfInt_, IndexOfInt64_, IndexOfFloat32_, IndexOfFloat64_, IndexOfString_
 
-.. _IndexOfFloat32: https://godoc.org/github.com/bingoohuang/funk#IndexOfFloat32
-.. _IndexOfFloat64: https://godoc.org/github.com/bingoohuang/funk#IndexOfFloat64
-.. _IndexOfInt: https://godoc.org/github.com/bingoohuang/funk#IndexOfInt
-.. _IndexOfInt64: https://godoc.org/github.com/bingoohuang/funk#IndexOfInt64
-.. _IndexOfString: https://godoc.org/github.com/bingoohuang/funk#IndexOfString
+.. _IndexOfFloat32: https://pkg.go.dev/github.com/bingoohuang/funk#IndexOfFloat32
+.. _IndexOfFloat64: https://pkg.go.dev/github.com/bingoohuang/funk#IndexOfFloat64
+.. _IndexOfInt: https://pkg.go.dev/github.com/bingoohuang/funk#IndexOfInt
+.. _IndexOfInt64: https://pkg.go.dev/github.com/bingoohuang/funk#IndexOfInt64
+.. _IndexOfString: https://pkg.go.dev/github.com/bingoohuang/funk#IndexOfString
 
 funk.LastIndexOf
 ................
@@ -199,11 +199,11 @@ if the value cannot be found.
 
 see also, typesafe implementations: LastIndexOfInt_, LastIndexOfInt64_, LastIndexOfFloat32_, LastIndexOfFloat64_, LastIndexOfString_
 
-.. _LastIndexOfFloat32: https://godoc.org/github.com/bingoohuang/funk#LastIndexOfFloat32
-.. _LastIndexOfFloat64: https://godoc.org/github.com/bingoohuang/funk#LastIndexOfFloat64
-.. _LastIndexOfInt: https://godoc.org/github.com/bingoohuang/funk#LastIndexOfInt
-.. _LastIndexOfInt64: https://godoc.org/github.com/bingoohuang/funk#LastIndexOfInt64
-.. _LastIndexOfString: https://godoc.org/github.com/bingoohuang/funk#LastIndexOfString
+.. _LastIndexOfFloat32: https://pkg.go.dev/github.com/bingoohuang/funk#LastIndexOfFloat32
+.. _LastIndexOfFloat64: https://pkg.go.dev/github.com/bingoohuang/funk#LastIndexOfFloat64
+.. _LastIndexOfInt: https://pkg.go.dev/github.com/bingoohuang/funk#LastIndexOfInt
+.. _LastIndexOfInt64: https://pkg.go.dev/github.com/bingoohuang/funk#LastIndexOfInt64
+.. _LastIndexOfString: https://pkg.go.dev/github.com/bingoohuang/funk#LastIndexOfString
 
 funk.ToMap
 ..........
@@ -243,11 +243,11 @@ Filters a slice based on a predicate.
 
 see also, typesafe implementations: FilterInt_, FilterInt64_, FilterFloat32_, FilterFloat64_, FilterString_
 
-.. _FilterFloat32: https://godoc.org/github.com/bingoohuang/funk#FilterFloat32
-.. _FilterFloat64: https://godoc.org/github.com/bingoohuang/funk#FilterFloat64
-.. _FilterInt: https://godoc.org/github.com/bingoohuang/funk#FilterInt
-.. _FilterInt64: https://godoc.org/github.com/bingoohuang/funk#FilterInt64
-.. _FilterString: https://godoc.org/github.com/bingoohuang/funk#FilterString
+.. _FilterFloat32: https://pkg.go.dev/github.com/bingoohuang/funk#FilterFloat32
+.. _FilterFloat64: https://pkg.go.dev/github.com/bingoohuang/funk#FilterFloat64
+.. _FilterInt: https://pkg.go.dev/github.com/bingoohuang/funk#FilterInt
+.. _FilterInt64: https://pkg.go.dev/github.com/bingoohuang/funk#FilterInt64
+.. _FilterString: https://pkg.go.dev/github.com/bingoohuang/funk#FilterString
 
 funk.Find
 .........
@@ -262,11 +262,11 @@ Finds an element in a slice based on a predicate.
 
 see also, typesafe implementations: FindInt_, FindInt64_, FindFloat32_, FindFloat64_, FindString_
 
-.. _FindFloat32: https://godoc.org/github.com/bingoohuang/funk#FindFloat32
-.. _FindFloat64: https://godoc.org/github.com/bingoohuang/funk#FindFloat64
-.. _FindInt: https://godoc.org/github.com/bingoohuang/funk#FindInt
-.. _FindInt64: https://godoc.org/github.com/bingoohuang/funk#FindInt64
-.. _FindString: https://godoc.org/github.com/bingoohuang/funk#FindString
+.. _FindFloat32: https://pkg.go.dev/github.com/bingoohuang/funk#FindFloat32
+.. _FindFloat64: https://pkg.go.dev/github.com/bingoohuang/funk#FindFloat64
+.. _FindInt: https://pkg.go.dev/github.com/bingoohuang/funk#FindInt
+.. _FindInt64: https://pkg.go.dev/github.com/bingoohuang/funk#FindInt64
+.. _FindString: https://pkg.go.dev/github.com/bingoohuang/funk#FindString
 
 funk.Map
 ........
@@ -479,11 +479,11 @@ Creates an array with unique values.
 
 see also, typesafe implementations: UniqInt_, UniqInt64_, UniqFloat32_, UniqFloat64_, UniqString_
 
-.. _UniqFloat32: https://godoc.org/github.com/bingoohuang/funk#UniqFloat32
-.. _UniqFloat64: https://godoc.org/github.com/bingoohuang/funk#UniqFloat64
-.. _UniqInt: https://godoc.org/github.com/bingoohuang/funk#UniqInt
-.. _UniqInt64: https://godoc.org/github.com/bingoohuang/funk#UniqInt64
-.. _UniqString: https://godoc.org/github.com/bingoohuang/funk#UniqString
+.. _UniqFloat32: https://pkg.go.dev/github.com/bingoohuang/funk#UniqFloat32
+.. _UniqFloat64: https://pkg.go.dev/github.com/bingoohuang/funk#UniqFloat64
+.. _UniqInt: https://pkg.go.dev/github.com/bingoohuang/funk#UniqInt
+.. _UniqInt64: https://pkg.go.dev/github.com/bingoohuang/funk#UniqInt64
+.. _UniqString: https://pkg.go.dev/github.com/bingoohuang/funk#UniqString
 
 funk.Drop
 .........
@@ -496,12 +496,12 @@ Creates an array/slice with `n` elements dropped from the beginning.
 
 see also, typesafe implementations: DropInt_, DropInt32_, DropInt64_, DropFloat32_, DropFloat64_, DropString_
 
-.. _DropInt: https://godoc.org/github.com/bingoohuang/funk#DropInt
-.. _DropInt32: https://godoc.org/github.com/bingoohuang/funk#DropInt64
-.. _DropInt64: https://godoc.org/github.com/bingoohuang/funk#DropInt64
-.. _DropFloat32: https://godoc.org/github.com/bingoohuang/funk#DropFloat32
-.. _DropFloat64: https://godoc.org/github.com/bingoohuang/funk#DropFloat64
-.. _DropString: https://godoc.org/github.com/bingoohuang/funk#DropString
+.. _DropInt: https://pkg.go.dev/github.com/bingoohuang/funk#DropInt
+.. _DropInt32: https://pkg.go.dev/github.com/bingoohuang/funk#DropInt64
+.. _DropInt64: https://pkg.go.dev/github.com/bingoohuang/funk#DropInt64
+.. _DropFloat32: https://pkg.go.dev/github.com/bingoohuang/funk#DropFloat32
+.. _DropFloat64: https://pkg.go.dev/github.com/bingoohuang/funk#DropFloat64
+.. _DropString: https://pkg.go.dev/github.com/bingoohuang/funk#DropString
 
 funk.Initial
 ............
@@ -533,11 +533,11 @@ Creates an array of shuffled values.
 
 see also, typesafe implementations: ShuffleInt_, ShuffleInt64_, ShuffleFloat32_, ShuffleFloat64_, ShuffleString_
 
-.. _ShuffleFloat32: https://godoc.org/github.com/bingoohuang/funk#ShuffleFloat32
-.. _ShuffleFloat64: https://godoc.org/github.com/bingoohuang/funk#ShuffleFloat64
-.. _ShuffleInt: https://godoc.org/github.com/bingoohuang/funk#ShuffleInt
-.. _ShuffleInt64: https://godoc.org/github.com/bingoohuang/funk#ShuffleInt64
-.. _ShuffleString: https://godoc.org/github.com/bingoohuang/funk#ShuffleString
+.. _ShuffleFloat32: https://pkg.go.dev/github.com/bingoohuang/funk#ShuffleFloat32
+.. _ShuffleFloat64: https://pkg.go.dev/github.com/bingoohuang/funk#ShuffleFloat64
+.. _ShuffleInt: https://pkg.go.dev/github.com/bingoohuang/funk#ShuffleInt
+.. _ShuffleInt64: https://pkg.go.dev/github.com/bingoohuang/funk#ShuffleInt64
+.. _ShuffleString: https://pkg.go.dev/github.com/bingoohuang/funk#ShuffleString
 
 funk.Subtract
 .............
@@ -552,7 +552,7 @@ Returns the subtraction between two collections. It preserve order.
 
 see also, typesafe implementations: SubtractString_
 
-.. SubtractString: https://godoc.org/github.com/bingoohuang/funk#SubtractString
+.. SubtractString: https://pkg.go.dev/github.com/bingoohuang/funk#SubtractString
 
 funk.Sum
 ........
@@ -566,10 +566,10 @@ Computes the sum of the values in an array.
 
 see also, typesafe implementations: SumInt_, SumInt64_, SumFloat32_, SumFloat64_
 
-.. _SumFloat32: https://godoc.org/github.com/bingoohuang/funk#SumFloat32
-.. _SumFloat64: https://godoc.org/github.com/bingoohuang/funk#SumFloat64
-.. _SumInt: https://godoc.org/github.com/bingoohuang/funk#SumInt
-.. _SumInt64: https://godoc.org/github.com/bingoohuang/funk#SumInt64
+.. _SumFloat32: https://pkg.go.dev/github.com/bingoohuang/funk#SumFloat32
+.. _SumFloat64: https://pkg.go.dev/github.com/bingoohuang/funk#SumFloat64
+.. _SumInt: https://pkg.go.dev/github.com/bingoohuang/funk#SumInt
+.. _SumInt64: https://pkg.go.dev/github.com/bingoohuang/funk#SumInt64
 
 funk.Reverse
 ............
@@ -583,12 +583,12 @@ will become the second to last, etc.
 
 see also, typesafe implementations: ReverseInt_, ReverseInt64_, ReverseFloat32_, ReverseFloat64_, ReverseString_, ReverseStrings_
 
-.. _ReverseFloat32: https://godoc.org/github.com/bingoohuang/funk#ReverseFloat32
-.. _ReverseFloat64: https://godoc.org/github.com/bingoohuang/funk#ReverseFloat64
-.. _ReverseInt: https://godoc.org/github.com/bingoohuang/funk#ReverseInt
-.. _ReverseInt64: https://godoc.org/github.com/bingoohuang/funk#ReverseInt64
-.. _ReverseString: https://godoc.org/github.com/bingoohuang/funk#ReverseString
-.. _ReverseStrings: https://godoc.org/github.com/bingoohuang/funk#ReverseStrings
+.. _ReverseFloat32: https://pkg.go.dev/github.com/bingoohuang/funk#ReverseFloat32
+.. _ReverseFloat64: https://pkg.go.dev/github.com/bingoohuang/funk#ReverseFloat64
+.. _ReverseInt: https://pkg.go.dev/github.com/bingoohuang/funk#ReverseInt
+.. _ReverseInt64: https://pkg.go.dev/github.com/bingoohuang/funk#ReverseInt64
+.. _ReverseString: https://pkg.go.dev/github.com/bingoohuang/funk#ReverseString
+.. _ReverseStrings: https://pkg.go.dev/github.com/bingoohuang/funk#ReverseStrings
 
 funk.SliceOf
 ............
@@ -679,4 +679,4 @@ Authors
 .. _performance: https://github.com/bingoohuang/funk/issues/19
 .. _gorm: https://github.com/jinzhu/gorm
 .. _sqlx: https://github.com/jmoiron/sqlx
-.. _godoc: https://godoc.org/github.com/bingoohuang/funk
+.. _godoc: https://pkg.go.dev/github.com/bingoohuang/funk
