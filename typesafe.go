@@ -214,6 +214,15 @@ func FilterString(s []string, cb func(s string) bool) []string {
 	return results
 }
 
+// IfInt returns v0 if b is true.
+func IfInt(b bool, v0, v1 int) int {
+	if b {
+		return v0
+	}
+
+	return v1
+}
+
 // ContainsInt returns true if an int is present in a iteratee.
 func ContainsInt(s []int, v int) bool {
 	for _, vv := range s {

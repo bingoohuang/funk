@@ -71,18 +71,17 @@ func PtrOf(itf interface{}) interface{} {
 	return cp.Interface()
 }
 
-// IsFunction returns if the argument is a function.
-func IsFunction(in interface{}, num ...int) bool {
+// IsFunc returns if the argument is a function.
+func IsFunc(in interface{}, numIns []int, numOut []int) bool {
 	funcType := reflect.TypeOf(in)
-
 	result := funcType.Kind() == reflect.Func
 
-	if len(num) >= 1 {
-		result = result && funcType.NumIn() == num[0]
+	if len(numIns) > 0 {
+		result = result && ContainsInt(numIns, funcType.NumIn())
 	}
 
-	if len(num) == 2 {
-		result = result && funcType.NumOut() == num[1]
+	if len(numOut) > 0 {
+		result = result && ContainsInt(numOut, funcType.NumOut())
 	}
 
 	return result
@@ -108,7 +107,6 @@ func IsEqual(expected interface{}, actual interface{}) bool {
 	}
 
 	return reflect.DeepEqual(expected, actual)
-
 }
 
 // IsType returns if the two objects are in the same type
@@ -131,20 +129,23 @@ func IsIteratee(in interface{}) bool {
 	if in == nil {
 		return false
 	}
-	arrType := reflect.TypeOf(in)
 
-	kind := arrType.Kind()
+	switch reflect.TypeOf(in).Kind() {
+	case reflect.Array, reflect.Slice, reflect.Map:
+		return true
+	}
 
-	return kind == reflect.Array || kind == reflect.Slice || kind == reflect.Map
+	return false
 }
 
 // IsCollection returns if the argument is a collection.
 func IsCollection(in interface{}) bool {
-	arrType := reflect.TypeOf(in)
+	switch reflect.TypeOf(in).Kind() {
+	case reflect.Array, reflect.Slice:
+		return true
+	}
 
-	kind := arrType.Kind()
-
-	return kind == reflect.Array || kind == reflect.Slice
+	return false
 }
 
 // SliceOf returns a slice which contains the element.

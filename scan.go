@@ -5,11 +5,22 @@ import (
 	"reflect"
 )
 
-// ForEach iterates over elements of collection and invokes iteratee
-// for each element.
-func ForEach(arr interface{}, predicate interface{}) {
+// ForEachOption defines the options for ForEach
+type ForEachOption struct {
+	Reverse bool
+}
+
+var boolType = reflect.TypeOf(true)
+
+// ForEach iterates over elements of collection and invokes iteratee for each element.
+func ForEach(arr interface{}, predicate interface{}, options ...ForEachOption) {
 	if !IsIteratee(arr) {
 		panic("First parameter must be an iteratee")
+	}
+
+	option := ForEachOption{}
+	if len(options) > 0 {
+		option = options[0]
 	}
 
 	var (
@@ -17,102 +28,97 @@ func ForEach(arr interface{}, predicate interface{}) {
 		arrValue  = reflect.ValueOf(arr)
 		arrType   = arrValue.Type()
 		funcType  = funcValue.Type()
+		numIn     = funcType.NumIn()
+		numOut    = funcType.NumOut()
 	)
 
+	if numOut == 1 {
+		if t := funcType.Out(0); !t.ConvertibleTo(boolType) {
+			panic("Map function's return is not compatible with bool.")
+		}
+	}
+
 	if arrType.Kind() == reflect.Slice || arrType.Kind() == reflect.Array {
-		if !IsFunction(predicate, 1, 0) {
-			panic("Second argument must be a function with one parameter")
+		if !IsFunc(predicate, []int{1, 2}, []int{0, 1}) {
+			panic("Second argument must be a function with one/two parameter")
 		}
 
-		arrElemType := arrValue.Type().Elem()
-
+		inOffset := IfInt(numIn != 2, 0, 1)
 		// Checking whether element type is convertible to function's first argument's type.
-		if !arrElemType.ConvertibleTo(funcType.In(0)) {
+		if t := arrValue.Type().Elem(); !t.ConvertibleTo(funcType.In(inOffset)) {
 			panic("Map function's argument is not compatible with type of array.")
 		}
 
-		for i := 0; i < arrValue.Len(); i++ {
-			funcValue.Call([]reflect.Value{arrValue.Index(i)})
+		switch {
+		case numIn == 1 && !option.Reverse:
+			for i := 0; i < arrValue.Len(); i++ {
+				outs := funcValue.Call([]reflect.Value{arrValue.Index(i)})
+				if numOut == 1 && !outs[0].Convert(boolType).Interface().(bool) {
+					break
+				}
+			}
+		case numIn == 2 && !option.Reverse:
+			for i := 0; i < arrValue.Len(); i++ {
+				outs := funcValue.Call([]reflect.Value{reflect.ValueOf(i), arrValue.Index(i)})
+				if numOut == 1 && !outs[0].Convert(boolType).Interface().(bool) {
+					break
+				}
+			}
+		case numIn == 1 && option.Reverse:
+			for i := arrValue.Len() - 1; i >= 0; i-- {
+				outs := funcValue.Call([]reflect.Value{arrValue.Index(i)})
+				if numOut == 1 && !outs[0].Convert(boolType).Interface().(bool) {
+					break
+				}
+			}
+		case numIn == 2 && option.Reverse:
+			for i := arrValue.Len() - 1; i >= 0; i-- {
+				outs := funcValue.Call([]reflect.Value{reflect.ValueOf(i), arrValue.Index(i)})
+				if numOut == 1 && !outs[0].Convert(boolType).Interface().(bool) {
+					break
+				}
+			}
 		}
 	}
 
 	if arrType.Kind() == reflect.Map {
-		if !IsFunction(predicate, 2, 0) {
-			panic("Second argument must be a function with two parameters")
+		if !IsFunc(predicate, []int{2, 3}, nil) {
+			panic("Second argument must be a function with two/three parameters")
 		}
 
 		// Type checking for Map<key, value> = (key, value)
-		keyType := arrType.Key()
-		valueType := arrType.Elem()
+		inOffset := IfInt(numIn != 3, 0, 1)
 
-		if !keyType.ConvertibleTo(funcType.In(0)) {
-			panic(fmt.Sprintf("function first argument is not compatible with %s", keyType.String()))
+		if t := arrType.Key(); !t.ConvertibleTo(funcType.In(inOffset)) {
+			panic(fmt.Sprintf("function first argument is not compatible with %v", t))
 		}
 
-		if !valueType.ConvertibleTo(funcType.In(1)) {
-			panic(fmt.Sprintf("function second argument is not compatible with %s", valueType.String()))
+		if t := arrType.Elem(); !t.ConvertibleTo(funcType.In(inOffset + 1)) {
+			panic(fmt.Sprintf("function second argument is not compatible with %v", t))
 		}
 
-		for _, key := range arrValue.MapKeys() {
-			funcValue.Call([]reflect.Value{key, arrValue.MapIndex(key)})
+		switch numIn {
+		case 2:
+			for _, key := range arrValue.MapKeys() {
+				outs := funcValue.Call([]reflect.Value{key, arrValue.MapIndex(key)})
+				if numOut == 1 && !outs[0].Convert(boolType).Interface().(bool) {
+					break
+				}
+			}
+		default: // 3
+			for i, key := range arrValue.MapKeys() {
+				outs := funcValue.Call([]reflect.Value{reflect.ValueOf(i), key, arrValue.MapIndex(key)})
+				if numOut == 1 && !outs[0].Convert(boolType).Interface().(bool) {
+					break
+				}
+			}
 		}
 	}
 }
 
-// ForEachRight iterates over elements of collection from the right and invokes iteratee
-// for each element.
+// ForEachRight iterates over elements of collection from the right and invokes iteratee for each element.
 func ForEachRight(arr interface{}, predicate interface{}) {
-	if !IsIteratee(arr) {
-		panic("First parameter must be an iteratee")
-	}
-
-	var (
-		funcValue = reflect.ValueOf(predicate)
-		arrValue  = reflect.ValueOf(arr)
-		arrType   = arrValue.Type()
-		funcType  = funcValue.Type()
-	)
-
-	if arrType.Kind() == reflect.Slice || arrType.Kind() == reflect.Array {
-		if !IsFunction(predicate, 1, 0) {
-			panic("Second argument must be a function with one parameter")
-		}
-
-		arrElemType := arrValue.Type().Elem()
-
-		// Checking whether element type is convertible to function's first argument's type.
-		if !arrElemType.ConvertibleTo(funcType.In(0)) {
-			panic("Map function's argument is not compatible with type of array.")
-		}
-
-		for i := arrValue.Len() - 1; i >= 0; i-- {
-			funcValue.Call([]reflect.Value{arrValue.Index(i)})
-		}
-	}
-
-	if arrType.Kind() == reflect.Map {
-		if !IsFunction(predicate, 2, 0) {
-			panic("Second argument must be a function with two parameters")
-		}
-
-		// Type checking for Map<key, value> = (key, value)
-		keyType := arrType.Key()
-		valueType := arrType.Elem()
-
-		if !keyType.ConvertibleTo(funcType.In(0)) {
-			panic(fmt.Sprintf("function first argument is not compatible with %s", keyType.String()))
-		}
-
-		if !valueType.ConvertibleTo(funcType.In(1)) {
-			panic(fmt.Sprintf("function second argument is not compatible with %s", valueType.String()))
-		}
-
-		keys := Reverse(arrValue.MapKeys()).([]reflect.Value)
-
-		for _, key := range keys {
-			funcValue.Call([]reflect.Value{key, arrValue.MapIndex(key)})
-		}
-	}
+	ForEach(arr, predicate, ForEachOption{Reverse: true})
 }
 
 // Head gets the first element of array.

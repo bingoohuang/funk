@@ -15,7 +15,7 @@ func Reduce(arr, reduceFunc, acc interface{}) float64 {
 
 	returnType := reflect.TypeOf(Reduce).Out(0)
 
-	isFunc := IsFunction(reduceFunc, 2, 1)
+	isFunc := IsFunc(reduceFunc, []int{2}, []int{1})
 	isRune := reflect.TypeOf(reduceFunc).Kind() == reflect.Int32
 
 	if !(isFunc || isRune) {

@@ -9,7 +9,7 @@ import (
 func TestForEach(t *testing.T) {
 	is := assert.New(t)
 
-	results := []int{}
+	var results []int
 
 	ForEach([]int{1, 2, 3, 4}, func(x int) {
 		if x%2 == 0 {
@@ -19,6 +19,25 @@ func TestForEach(t *testing.T) {
 
 	is.Equal(results, []int{2, 4})
 
+	results = results[0:0]
+
+	ForEach([]int{1, 2, 3, 4}, func(i, x int) {
+		if i%2 == 0 {
+			results = append(results, x)
+		}
+	})
+
+	is.Equal(results, []int{1, 3})
+
+	results = results[0:0]
+
+	ForEach([]int{1, 2, 3, 4}, func(i, x int) bool {
+		results = append(results, x)
+		return i < 2
+	})
+
+	is.Equal(results, []int{1, 2, 3})
+
 	mapping := map[int]string{
 		1: "Florent",
 		2: "Gilles",
@@ -26,6 +45,14 @@ func TestForEach(t *testing.T) {
 
 	ForEach(mapping, func(k int, v string) {
 		is.Equal(v, mapping[k])
+	})
+
+	j := 0
+
+	ForEach(mapping, func(i, k int, v string) {
+		is.Equal(v, mapping[k])
+		is.Equal(i, j)
+		j++
 	})
 }
 

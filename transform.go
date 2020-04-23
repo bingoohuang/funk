@@ -199,7 +199,7 @@ func Map(arr interface{}, mapFunc interface{}) interface{} {
 		panic("First parameter must be an iteratee")
 	}
 
-	if !IsFunction(mapFunc) {
+	if !IsFunc(mapFunc, nil, nil) {
 		panic("Second argument must be function")
 	}
 
@@ -300,7 +300,7 @@ func Reverse(in interface{}) interface{} {
 		return resultSlice.Interface()
 	}
 
-	panic(fmt.Sprintf("Type %s is not supported by Reverse", valueType.String()))
+	panic(fmt.Sprintf("Type %v is not supported by Reverse", valueType))
 }
 
 // Uniq creates an array with unique values.

@@ -434,6 +434,17 @@ Range over an iteratee (map, slice).
         fmt.Println(x)
     })
 
+    funk.ForEach([]int{1, 2, 3, 4}, func(index, x int) {
+        fmt.Println(index, x)
+    })
+
+    funk.ForEach([]int{1, 2, 3, 4}, func(index, x int) bool {
+        fmt.Println(index, x)
+        return index < 1
+
+    })
+
+
 funk.ForEachRight
 ............
 

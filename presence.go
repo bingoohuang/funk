@@ -13,7 +13,7 @@ func Filter(arr interface{}, predicate interface{}) interface{} {
 		panic("First parameter must be an iteratee")
 	}
 
-	if !IsFunction(predicate, 1, 1) {
+	if !IsFunc(predicate, []int{1}, []int{1}) {
 		panic("Second argument must be function")
 	}
 
@@ -62,7 +62,7 @@ func FindKey(arr interface{}, predicate interface{}) (matchKey, matchEle interfa
 		panic("First parameter must be an iteratee")
 	}
 
-	if !IsFunction(predicate, 1, 1) {
+	if !IsFunc(predicate, []int{1}, []int{1}) {
 		panic("Second argument must be function")
 	}
 
