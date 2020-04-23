@@ -83,7 +83,7 @@ func TestChainDrop(t *testing.T) {
 		N  int
 	}{
 		{In: []int{0, 1, 1, 2, 3, 0, 0, 12}, N: 3},
-		// Bug: Issues from go-funk (n parameter can be greater than len(in))
+		// Bug: Issues from funk (n parameter can be greater than len(in))
 		// {In: []int{0, 1}, N: 3},
 		// {In: []int{}, N: 3},
 	}

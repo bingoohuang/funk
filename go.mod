@@ -1,4 +1,4 @@
-module github.com/thoas/go-funk
+module github.com/bingoohuang/funk
 
 go 1.13
 
